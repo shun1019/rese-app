@@ -1,0 +1,172 @@
+.mypage-container {
+    max-width: 1200px;
+    margin: 0 80px;
+}
+
+.user-info {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.user-name {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.mypage-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.reservations-section, .favorites-section {
+    flex: auto;
+    min-width: 300px;
+}
+
+.reservations-section {
+    width: 100px;
+}
+
+.section-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.no-data {
+    color: #888;
+    font-style: italic;
+}
+
+.reservation-card {
+    background-color: #3c64e6;
+    color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 40px 20px 0;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 1.1);
+}
+
+.reservation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.reservation-number {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cancel-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    color: #666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cancel-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.reservation-detail {
+    padding: 15px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.detail-item:last-child {
+    margin-bottom: 0;
+}
+
+.detail-label {
+    font-weight: bold;
+}
+
+.favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 50px;
+}
+
+.shop-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 1.1);
+}
+
+.shop-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.shop-content {
+    padding: 15px;
+}
+
+.shop-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.shop-tags {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.shop-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detail-btn {
+    background-color: #3c64e6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.favorite-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #ddd;
+}
+
+.favorite-btn.active {
+    color: #ff4b4b;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .mypage-content {
+        flex-direction: column;
+    }
+
+    .favorites-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}

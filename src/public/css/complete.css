@@ -1,0 +1,36 @@
+.complete-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    background-color: #f2f2f2;
+}
+
+.complete-card {
+    background-color: white;
+    padding: 80px;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 1.1);
+    text-align: center;
+}
+
+.complete-message {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.complete-button {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #3c64e6;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.complete-button:hover {
+    background-color: #1c4ad6;
+}

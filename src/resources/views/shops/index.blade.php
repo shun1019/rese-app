@@ -21,9 +21,8 @@
         <option {{ request('genre') == $genre ? 'selected' : '' }}>{{ $genre }}</option>
         @endforeach
     </select>
-
-    <input type="text" name="search" id="search-input" placeholder="Search ..." value="{{ request('search') }}">
     <i class="fas fa-search search-icon"></i>
+    <input type="text" name="search" id="search-input" placeholder="Search ..." value="{{ request('search') }}">
 </div>
 @endsection
 
