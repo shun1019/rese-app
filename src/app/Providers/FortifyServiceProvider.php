@@ -11,12 +11,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
+use Laravel\Fortify\Contracts\RegisterResponse;
+use Illuminate\Http\RedirectResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        //
+        $this->app->singleton(RegisterResponse::class, function () {
+            return new class implements RegisterResponse {
+                public function toResponse($request): RedirectResponse
+                {
+                    return redirect()->intended('/email/verify');
+                }
+            };
+        });
     }
 
     public function boot()

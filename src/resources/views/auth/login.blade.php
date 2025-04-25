@@ -1,64 +1,39 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ログイン | Rese</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
-</head>
+@section('title', 'ログイン | Rese')
 
-<body>
-    <div id="menu-popup" class="menu-popup">
-        <div id="close-menu" class="close-button">
-            <i class="fas fa-times"></i>
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+@endsection
+
+@section('content')
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            Login
         </div>
-        <div class="menu-links">
-            <a href="/">Home</a>
-            <a href="{{ route('register') }}">Registration</a>
-            <a href="{{ route('login') }}">Login</a>
-        </div>
-    </div>
+        <div class="auth-body">
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email" autofocus>
+                    @error('email')
+                    <span class="error">{{ $message }}</span>
+                    @enderror
+                </div>
 
-    <div class="logo-container">
-        <div class="logo">
-            <i class="fas fa-bars"></i>
-        </div>
-        <a href="/" class="logo-text">Rese</a>
-    </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" class="form-control" name="password" placeholder="Password">
+                    @error('password')
+                    <span class="error">{{ $message }}</span>
+                    @enderror
+                </div>
 
-    <div class="auth-container">
-        <div class="auth-card">
-            <div class="auth-header">
-                Login
-            </div>
-            <div class="auth-body">
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
-                    <div class="form-group">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" autofocus>
-                        @error('email')
-                        <span class="invalid-feedback">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password">
-                        @error('password')
-                        <span class="invalid-feedback">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <button type="submit" class="btn">ログイン</button>
-                </form>
-            </div>
+                <button type="submit" class="btn">ログイン</button>
+            </form>
         </div>
     </div>
-
-    <script src="{{ asset('js/menu.js') }}"></script>
-</body>
-
-</html>
+</div>
+@endsection
