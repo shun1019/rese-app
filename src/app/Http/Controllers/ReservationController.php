@@ -22,7 +22,7 @@ class ReservationController extends Controller
         $shopName = $reservation->shop->name;
         $reservation->delete();
 
-        return redirect()->route('mypage')->with('success', $shopName . 'の予約をキャンセルしました。');
+        return redirect()->route('mypage')->with('success', "{$shopName}の予約をキャンセルしました。");
     }
 
     /**
@@ -39,5 +39,17 @@ class ReservationController extends Controller
         ]);
 
         return redirect()->route('reservations.done');
+    }
+
+    /**
+     * キャンセル確認画面
+     */
+    public function confirmCancel(Reservation $reservation)
+    {
+        if (Auth::id() !== $reservation->user_id) {
+            return redirect()->route('mypage')->with('error', '不正なアクセスです。');
+        }
+
+        return view('reservations.confirm-cancel', compact('reservation'));
     }
 }

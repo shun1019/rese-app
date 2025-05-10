@@ -24,10 +24,9 @@
             <div class="reservation-card">
                 <div class="reservation-header">
                     <div class="reservation-number">予約{{ $loop->iteration }}</div>
-                    <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" class="cancel-form">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="cancel-btn"><i class="fas fa-times"></i></button>
+                    <a href="{{ route('reservations.confirm-cancel', $reservation->id) }}" class="cancel-btn">
+                        <i class="fas fa-times"></i></button>
+                    </a>
                     </form>
                 </div>
 
