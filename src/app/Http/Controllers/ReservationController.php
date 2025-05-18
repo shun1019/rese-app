@@ -52,4 +52,20 @@ class ReservationController extends Controller
 
         return view('reservations.confirm-cancel', compact('reservation'));
     }
+
+    /**
+     * 予約情報の変更
+     */
+    public function update(ReservationRequest $request, $id)
+    {
+        $reservation = Reservation::findOrFail($id);
+
+        if ($reservation->user_id !== Auth::id()) {
+            return redirect()->route('mypage');
+        }
+
+        $reservation->update($request->only(['date', 'time', 'number']));
+
+        return redirect()->route('mypage');
+    }
 }

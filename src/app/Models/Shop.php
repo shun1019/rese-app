@@ -31,4 +31,9 @@ class Shop extends Model
     {
         return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
     }
+
+    public function rating()
+    {
+        return $this->hasMany(Rating::class);
+    }
 }

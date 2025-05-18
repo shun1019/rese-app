@@ -16,10 +16,11 @@
 .mypage-content {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 50px;
 }
 
-.reservations-section, .favorites-section {
+.reservations-section,
+.favorites-section {
     flex: auto;
     min-width: 300px;
 }
@@ -41,11 +42,12 @@
 
 .reservation-card {
     background-color: #3c64e6;
-    color: white;
+    color: #fff;
     border-radius: 8px;
     overflow: hidden;
     margin: 0 40px 20px 0;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 1.1);
+    padding-bottom: 15px;
 }
 
 .reservation-header {
@@ -64,7 +66,7 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: white;
+    background-color: #fff;
     color: #666;
     display: flex;
     justify-content: center;
@@ -103,7 +105,7 @@
 }
 
 .shop-card {
-    background-color: white;
+    background-color: #fff;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 1.1);
@@ -139,7 +141,7 @@
 
 .detail-btn {
     background-color: #3c64e6;
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 4px;
     padding: 8px 15px;
@@ -158,6 +160,46 @@
 
 .favorite-btn.active {
     color: #ff4b4b;
+}
+
+.reservation-edit-form input,
+.reservation-edit-form select {
+    padding: 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.edit-mode {
+    font-size: 14px;
+    padding: 4px;
+    margin-top: 4px;
+}
+
+.update-btn {
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: #fff;
+    color: #3c64e6;
+    border: none;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+.update-btn:hover {
+    background-color: #2a4dcc;
+}
+
+.hidden {
+    display: none;
+}
+
+.form-error {
+    color: #dc3545;
+    font-size: 13px;
+    margin-top: 4px;
 }
 
 /* レスポンシブ対応 */

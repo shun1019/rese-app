@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class MyPageController extends Controller
@@ -13,7 +12,11 @@ class MyPageController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $reservations = $user->reservations()->with('shop')->get();
+
+        $reservations = $user->reservations()
+            ->with(['shop', 'rating'])
+            ->get();
+
         $favorites = $user->favoriteShops()->get();
 
         return view('mypage.index', compact('user', 'reservations', 'favorites'));

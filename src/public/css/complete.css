@@ -7,7 +7,7 @@
 }
 
 .complete-card {
-    background-color: white;
+    background-color: #fff;
     padding: 80px;
     border-radius: 8px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 1.1);
@@ -24,7 +24,7 @@
     display: inline-block;
     padding: 10px 30px;
     background-color: #3c64e6;
-    color: white;
+    color: #fff;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;

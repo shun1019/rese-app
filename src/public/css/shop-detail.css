@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 80px;
-    margin: 0 80px;
+    margin: 30px 80px 60px
 }
 
 .shop-detail {
@@ -20,7 +20,7 @@
     width: 36px;
     height: 36px;
     border-radius: 5px;
-    background-color: white;
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,19 +61,19 @@
     flex: 1;
     min-width: 300px;
     background-color: #3c64e6;
-    color: white;
+    color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     padding-bottom: 0;
-    height: 750px;
-    margin-top: -60px;
+    height: 700px;
+    margin-top: -30px;
 }
 
 .reservation-form h2 {
     font-size: 24px;
-    padding: 25px;
+    padding: 10px 25px;
 }
 
 .reservation-form-inner {
@@ -122,7 +122,7 @@
     margin-top: auto;
     padding: 12px;
     background-color: #2240ec;
-    color: white;
+    color: #fff;
     border: none;
     font-size: 16px;
     cursor: pointer;

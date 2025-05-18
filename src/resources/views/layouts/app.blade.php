@@ -58,10 +58,6 @@
         @yield('content')
     </main>
 
-    <footer>
-        <p>&copy; {{ date('Y') }} Rese All Rights Reserved.</p>
-    </footer>
-
     <script src="{{ asset('js/menu.js') }}"></script>
     @yield('scripts')
 </body>
