@@ -21,7 +21,7 @@
                         <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
                     </div>
                     @error('email')
-                    <span class="error">{{ $message }}</span>
+                    <span class="form-error">{{ $message }}</span>
                     @enderror
                 </div>
 
@@ -31,7 +31,7 @@
                         <input type="password" class="form-control" name="password" placeholder="Password">
                     </div>
                     @error('password')
-                    <span class="error">{{ $message }}</span>
+                    <span class="form-error">{{ $message }}</span>
                     @enderror
                 </div>
 

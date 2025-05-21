@@ -10,9 +10,7 @@
 <div class="complete-container">
     <div class="complete-card">
         <p class="complete-message">会員登録ありがとうございます</p>
-        <a href="{{ route('login') }}" class="complete-button">
-            ログインする
-        </a>
+        <a href="{{ route('login') }}" class="complete-button">ログインする</a>
     </div>
 </div>
 @endsection

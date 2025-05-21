@@ -47,7 +47,7 @@ ol {
 }
 
 .logo i {
-    color: white;
+    color: #fff;
     font-size: 24px;
 }
 
@@ -56,18 +56,6 @@ ol {
     font-size: 24px;
     font-weight: bold;
     text-decoration: none;
-}
-
-main {
-    min-height: calc(100vh - 160px);
-}
-
-.alert {
-    padding: 15px 20px;
-    margin: 20px 80px;
-    font-size: 20px;
-    color: #009800;
-    font-weight: bold;
 }
 
 .menu-popup {
@@ -107,7 +95,7 @@ main {
 }
 
 .close-button i {
-    color: white;
+    color: #fff;
     font-size: 24px;
 }
 

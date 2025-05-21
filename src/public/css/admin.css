@@ -1,0 +1,80 @@
+.admin-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.form-group {
+    width: 95%;
+    margin-bottom: 30px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.create-btn {
+    padding: 10px 20px;
+    background-color: #3c64e6;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-error {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* 管理者ダッシュボード用スタイル */
+
+.admin-dashboard {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fdfdfd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-dashboard h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.admin-dashboard p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.admin-dashboard .btn {
+    background-color: #3c64e6;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 4px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.admin-dashboard .btn:hover {
+    background-color: #2d4dc0;
+}
+
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .admin-container {
+    max-width: 500px;
+    font-size: 14px;
+}
+}

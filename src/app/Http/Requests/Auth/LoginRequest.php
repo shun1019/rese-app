@@ -39,9 +39,9 @@ class LoginRequest extends FortifyLoginRequest
     public function messages()
     {
         return [
-            'email.required' => 'メールアドレスを入力してください',
-            'email.email' => '有効なメールアドレスを入力してください',
-            'password.required' => 'パスワードを入力してください',
+            'email.required' => 'メールアドレスを入力してください。',
+            'email.email' => '有効なメールアドレスを入力してください。',
+            'password.required' => 'パスワードを入力してください。',
         ];
     }
 
@@ -56,7 +56,7 @@ class LoginRequest extends FortifyLoginRequest
     {
         if (!Auth::attempt($this->only('email', 'password'), $this->filled('remember'))) {
             throw ValidationException::withMessages([
-                'email' => ['ログイン情報が登録されていません'],
+                'email' => ['ログイン情報が登録されていません。'],
             ]);
         }
     }

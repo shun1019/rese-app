@@ -41,23 +41,7 @@
         </div>
         @yield('header-content')
     </header>
-
-    <main>
-        @if (session('success'))
-        <div class="alert success">
-            {{ session('success') }}
-        </div>
-        @endif
-
-        @if (session('error'))
-        <div class="alert error">
-            {{ session('error') }}
-        </div>
-        @endif
-
-        @yield('content')
-    </main>
-
+    @yield('content')
     <script src="{{ asset('js/menu.js') }}"></script>
     @yield('scripts')
 </body>

@@ -6,6 +6,14 @@
 <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
 @endsection
 
+@section('header-content')
+@auth
+@if(Auth::user()->isAdmin())
+<a href="{{ route('admin.owner.create') }}" class="btn">店舗代表者を追加</a>
+@endif
+@endauth
+@endsection
+
 @section('content')
 <div class="mypage-container">
     <div class="user-info">
@@ -43,7 +51,9 @@
                             <div class="detail-label">Date</div>
                             <div class="detail-value view-mode">{{ $reservation->date }}</div>
                             <input type="date" name="date" value="{{ $reservation->date }}" class="edit-mode hidden" min="{{ date('Y-m-d') }}">
-                            @error('date')<div class="form-error">{{ $message }}</div>@enderror
+                            @error('date')
+                            <div class="form-error">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="detail-item editable" data-field="time">
@@ -54,7 +64,9 @@
                                 <option value="{{ $time }}" {{ $reservation->time === $time ? 'selected' : '' }}>{{ $time }}</option>
                                 @endforeach
                             </select>
-                            @error('time')<div class="form-error">{{ $message }}</div>@enderror
+                            @error('time')
+                            <div class="form-error">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="detail-item editable" data-field="number">
@@ -65,7 +77,9 @@
                                     <option value="{{ $i }}" {{ $reservation->number == $i ? 'selected' : '' }}>{{ $i }}人</option>
                                     @endfor
                             </select>
-                            @error('number')<div class="form-error">{{ $message }}</div>@enderror
+                            @error('number')
+                            <div class="form-error">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         {{-- 評価ボタンの表示条件 --}}
