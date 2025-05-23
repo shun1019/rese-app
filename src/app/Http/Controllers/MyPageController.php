@@ -13,10 +13,16 @@ class MyPageController extends Controller
     {
         $user = Auth::user();
 
-        $reservations = $user->reservations()
-            ->with(['shop', 'rating'])
-            ->get();
+        // オーナーの場合は、店舗情報とその予約一覧を表示
+        if ($user->isOwner()) {
+            $shop = $user->shop;
+            $reservations = $shop ? $shop->reservations()->with('user')->get() : collect(); // 店舗未登録なら空コレクション
 
+            return view('mypage.owner', compact('user', 'shop', 'reservations'));
+        }
+
+        // 一般ユーザーの場合
+        $reservations = $user->reservations()->with(['shop', 'rating'])->get();
         $favorites = $user->favoriteShops()->get();
 
         return view('mypage.index', compact('user', 'reservations', 'favorites'));

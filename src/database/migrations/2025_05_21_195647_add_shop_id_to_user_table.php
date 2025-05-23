@@ -6,27 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 class AddShopIdToUserTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::table('user', function (Blueprint $table) {
-            //
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('shop_id')->nullable()->constrained()->onDelete('set null');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::table('user', function (Blueprint $table) {
-            //
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['shop_id']);
+            $table->dropColumn('shop_id');
         });
     }
 }

@@ -115,7 +115,7 @@
             <div class="favorites-grid">
                 @foreach($favorites as $shop)
                 <div class="shop-card">
-                    <img src="{{ asset('storage/image/' . $shop->image) }}" alt="{{ $shop->name }}" class="shop-image">
+                    <img src="{{ asset('storage/' . $shop->image) }}" alt="{{ $shop->name }}" class="shop-image">
                     <div class="shop-content">
                         <div class="shop-name">{{ $shop->name }}</div>
                         <div class="shop-tags">#{{ $shop->area }} #{{ $shop->genre }}</div>

@@ -9,7 +9,7 @@ class OwnerMiddleware
 {
     public function handle($request, Closure $next)
     {
-        if (!Auth::check() || !Auth::use()->isOwner()) {
+        if (!Auth::check() || !Auth::user()->isOwner()) {
             abort(403, '店舗代表者のみがアクセス可能です。');
         }
 

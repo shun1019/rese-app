@@ -15,6 +15,7 @@ class Shop extends Model
         'image',
         'area',
         'genre',
+        'user_id', // ← 必要に応じて明示してもOK
     ];
 
     public function reservations()
@@ -35,5 +36,10 @@ class Shop extends Model
     public function rating()
     {
         return $this->hasMany(Rating::class);
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

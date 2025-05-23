@@ -58,7 +58,9 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->group(functio
 
 // 店舗代表者専用ルート（owner ロール）
 Route::middleware(['auth', 'verified', 'owner'])->prefix('owner')->group(function () {
-    Route::get('/dashboard', [OwnerController::class, 'index'])->name('owner.dashboard');
+    Route::get('/dashboard', [OwnerController::class, 'index'])->name('owner.dashboard'); // ← ★追加
+    Route::get('/mypage', [MyPageController::class, 'index'])->name('owner.mypage');
+    Route::post('/shop/store', [OwnerController::class, 'storeShop'])->name('owner.shop.store');
     Route::get('/shop/edit', [OwnerController::class, 'editShop'])->name('owner.shop.edit');
     Route::post('/shop/update', [OwnerController::class, 'updateShop'])->name('owner.shop.update');
     Route::get('/reservations', [OwnerController::class, 'reservations'])->name('owner.reservations.index');

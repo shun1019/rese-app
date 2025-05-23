@@ -1,0 +1,89 @@
+.owner-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 50px;
+    background-color: #fff;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.shop-section,
+.reservation-section {
+    margin-bottom: 40px;
+}
+
+.shop-form .form-group {
+    margin-bottom: 20px;
+}
+
+.shop-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.shop-form input,
+.shop-form textarea {
+    width: 95%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.shop-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-error {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.primary-btn {
+    padding: 10px 20px;
+    background-color: #3c64e6;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.primary-btn:hover {
+    background-color: #2a4dcc;
+}
+
+.reservation-section h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.reservation-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #fff;
+}
+
+.reservation-table th,
+.reservation-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.reservation-table th {
+    background-color: #f0f0f0;
+}
+
+.preview-image {
+    max-width: 200px;
+}
