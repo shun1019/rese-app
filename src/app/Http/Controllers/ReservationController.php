@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationRequest;
+use Illuminate\Http\Request;
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
 
 class ReservationController extends Controller
 {
@@ -26,19 +29,42 @@ class ReservationController extends Controller
     }
 
     /**
-     * 予約の実行
+     * 予約の実行（Stripe決済連携）
      */
     public function store(ReservationRequest $request)
     {
-        Reservation::create([
+        // 予約を作成（決済前）
+        $reservation = Reservation::create([
             'user_id' => Auth::id(),
             'shop_id' => $request->shop_id,
             'date'    => $request->date,
             'time'    => $request->time,
             'number'  => $request->number,
+            'price'   => 1000,
+            'status'  => 'unpaid',
         ]);
 
-        return redirect()->route('reservations.done');
+        // Stripeセッション作成
+        Stripe::setApiKey(config('services.stripe.secret'));
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'jpy',
+                    'product_data' => [
+                        'name' => $reservation->shop->name . ' 予約',
+                    ],
+                    'unit_amount' => $reservation->price,
+                ],
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => route('reservations.done', ['reservation_id' => $reservation->id]),
+            'cancel_url' => route('mypage'),
+        ]);
+
+        return redirect($session->url);
     }
 
     /**
@@ -67,5 +93,15 @@ class ReservationController extends Controller
         $reservation->update($request->only(['date', 'time', 'number']));
 
         return redirect()->route('mypage');
+    }
+
+    /**
+     * 決済完了後のリダイレクト処理
+     */
+    public function done(Request $request)
+    {
+        $reservation = Reservation::findOrFail($request->reservation_id);
+        $reservation->update(['status' => 'paid']);
+        return view('reservations.complete', compact('reservation'));
     }
 }

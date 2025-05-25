@@ -9,56 +9,45 @@ use App\Http\Controllers\RatingController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OwnerController;
 
-
-// トップページ（店舗一覧）
+// トップページ
 Route::get('/', [ShopController::class, 'index'])->name('index');
 
-// 店舗詳細ページ
+// 店舗詳細
 Route::get('/detail/{id}', [ShopController::class, 'show'])->name('shops.show');
 
-// メール認証確認通知ページ
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
+// メール認証ページ
+Route::get('/email/verify', fn() => view('auth.verify-email'))->middleware('auth')->name('verification.notice');
 
-// 会員登録完了ページ
-Route::get('/thanks', function () {
-    return view('auth.thanks');
-})->middleware('auth')->name('thanks');
+// 会員登録完了
+Route::get('/thanks', fn() => view('auth.thanks'))->middleware('auth')->name('thanks');
 
-// 認証が必要なルート
+// 認証ユーザー用ルート
 Route::middleware(['auth', 'verified'])->group(function () {
-
-    // お気に入り登録・解除
     Route::post('/favorites/{shop}', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
 
-    // 予約操作
     Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
     Route::put('/reservations/{id}', [ReservationController::class, 'update'])->name('reservations.update');
     Route::delete('/reservations/{id}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
     Route::get('/reservations/{reservation}/confirm-cancel', [ReservationController::class, 'confirmCancel'])->name('reservations.confirm-cancel');
 
-    // マイページ・予約完了画面
-    Route::get('/mypage', [MyPageController::class, 'index'])->name('mypage');
-    Route::get('/done', function () {
-        return view('reservations.complete');
-    })->name('reservations.done');
+    Route::get('/done', [ReservationController::class, 'done'])->name('reservations.done');
 
-    // 店舗評価機能
     Route::get('/rating/{reservation}/create', [RatingController::class, 'create'])->name('ratings.create');
     Route::post('/ratings/{reservation}', [RatingController::class, 'store'])->name('ratings.store');
+
+    Route::get('/mypage', [MyPageController::class, 'index'])->name('mypage');
 });
 
-// 管理者専用ルート（admin ロール）
+// 管理者専用ルート
 Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/owners/create', [AdminController::class, 'createOwner'])->name('admin.owner.create');
     Route::post('/owners', [AdminController::class, 'storeOwner'])->name('admin.owner.store');
+    Route::get('/mail', [AdminController::class, 'showMailForm'])->name('admin.mail.form');
+    Route::post('/mail/send', [AdminController::class, 'sendMail'])->name('admin.mail.send');
 });
 
-// 店舗代表者専用ルート（owner ロール）
+// 店舗代表者専用ルート
 Route::middleware(['auth', 'verified', 'owner'])->prefix('owner')->group(function () {
-    Route::get('/dashboard', [OwnerController::class, 'index'])->name('owner.dashboard'); // ← ★追加
     Route::get('/mypage', [MyPageController::class, 'index'])->name('owner.mypage');
     Route::post('/shop/store', [OwnerController::class, 'storeShop'])->name('owner.shop.store');
     Route::get('/shop/edit', [OwnerController::class, 'editShop'])->name('owner.shop.edit');

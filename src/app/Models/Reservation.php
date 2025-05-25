@@ -16,6 +16,7 @@ class Reservation extends Model
         'time',
         'number',
         'status',
+        'price',
     ];
 
     public function user()

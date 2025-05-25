@@ -20,6 +20,10 @@ class CreateShopsTable extends Migration
             $table->string('image')->nullable();
             $table->string('area');
             $table->string('genre');
+            $table->foreignId('user_id')
+                ->nullable()
+                ->constrained()
+                ->onDelete('set null');
             $table->timestamps();
         });
     }

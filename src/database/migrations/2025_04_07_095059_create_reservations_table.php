@@ -8,8 +8,6 @@ class CreateReservationsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -20,15 +18,14 @@ class CreateReservationsTable extends Migration
             $table->date('date');
             $table->time('time');
             $table->integer('number');
-            $table->enum('status', ['pending', 'confirmed', 'visited', 'cancelled'])->default('pending');
+            $table->integer('price')->default(3000);
+            $table->enum('status', ['unpaid', 'paid', 'visited', 'cancelled'])->default('unpaid');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

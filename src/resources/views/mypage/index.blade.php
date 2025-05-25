@@ -7,9 +7,11 @@
 @endsection
 
 @section('header-content')
+
 @auth
 @if(Auth::user()->isAdmin())
-<a href="{{ route('admin.owner.create') }}" class="btn">店舗代表者を追加</a>
+<a href="{{ route('admin.owner.create') }}" class="header-btn">店舗代表者を追加</a>
+<a href="{{ route('admin.mail.form') }}" class="header-btn">利用者へメール送信</a>
 @endif
 @endauth
 @endsection
