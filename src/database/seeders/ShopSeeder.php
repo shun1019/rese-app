@@ -158,7 +158,9 @@ class ShopSeeder extends Seeder
         ];
 
         foreach ($shops as $shop) {
-            Shop::create($shop);
+            Shop::create(array_merge($shop, [
+                'price' => rand(1000, 10000),
+            ]));
         }
     }
 }

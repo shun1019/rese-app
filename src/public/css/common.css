@@ -105,3 +105,10 @@ ol {
     align-items: center;
     gap: 20px;
 }
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .header {
+        padding: 20px;
+    }
+}

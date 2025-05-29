@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
+use App\Models\Shop;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationRequest;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class ReservationController extends Controller
         $reservation = Reservation::findOrFail($id);
 
         if ($reservation->user_id !== Auth::id()) {
-            return redirect()->route('mypage')->with('error', '不正なアクセスです。');
+            return redirect()->route('mypage');
         }
 
         $shopName = $reservation->shop->name;
@@ -33,18 +34,18 @@ class ReservationController extends Controller
      */
     public function store(ReservationRequest $request)
     {
-        // 予約を作成（決済前）
+        $shop = Shop::findOrFail($request->shop_id);
+
         $reservation = Reservation::create([
             'user_id' => Auth::id(),
-            'shop_id' => $request->shop_id,
+            'shop_id' => $shop->id,
             'date'    => $request->date,
             'time'    => $request->time,
             'number'  => $request->number,
-            'price'   => 1000,
+            'price'   => $shop->price,
             'status'  => 'unpaid',
         ]);
 
-        // Stripeセッション作成
         Stripe::setApiKey(config('services.stripe.secret'));
 
         $session = Session::create([
@@ -53,9 +54,9 @@ class ReservationController extends Controller
                 'price_data' => [
                     'currency' => 'jpy',
                     'product_data' => [
-                        'name' => $reservation->shop->name . ' 予約',
+                        'name' => $shop->name . ' 予約',
                     ],
-                    'unit_amount' => $reservation->price,
+                    'unit_amount' => $reservation->price * $reservation->number,
                 ],
                 'quantity' => 1,
             ]],
@@ -73,7 +74,7 @@ class ReservationController extends Controller
     public function confirmCancel(Reservation $reservation)
     {
         if (Auth::id() !== $reservation->user_id) {
-            return redirect()->route('mypage')->with('error', '不正なアクセスです。');
+            return redirect()->route('mypage');
         }
 
         return view('reservations.confirm-cancel', compact('reservation'));

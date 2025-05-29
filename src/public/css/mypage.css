@@ -29,21 +29,10 @@
     width: 100px;
 }
 
-.section-title {
-    font-size: 22px;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-.no-data {
-    color: #888;
-    font-style: italic;
-}
-
 .reservation-card {
     background-color: #3c64e6;
     color: #fff;
-    border-radius: 8px;
+    border-radius: 4px;
     overflow: hidden;
     margin: 0 40px 20px 0;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 1.1);
@@ -57,20 +46,25 @@
     padding: 15px;
 }
 
+.icon-image {
+    width: 40px;
+    height: 40px;
+}
+
 .reservation-number {
     font-size: 18px;
-    font-weight: bold;
 }
 
 .cancel-btn {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #fff;
-    color: #666;
+    background-color: #3c64e6;
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: solid;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -206,6 +200,7 @@
 @media (max-width: 768px) {
     .mypage-content {
         flex-direction: column;
+        margin-bottom: 50px;
     }
 
     .favorites-grid {

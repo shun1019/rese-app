@@ -16,12 +16,12 @@ class RatingController extends Controller
     {
         // 認証ユーザーの予約であるかチェック
         if ($reservation->user_id !== Auth::id()) {
-            return redirect()->route('mypage')->with('error', '不正なアクセスです。');
+            return redirect()->route('mypage');
         }
 
         // すでに評価済みならマイページにリダイレクト
         if ($reservation->rating) {
-            return redirect()->route('mypage')->with('error', 'この予約はすでに評価済みです。');
+            return redirect()->route('mypage');
         }
 
         return view('ratings.create', compact('reservation'));
@@ -34,12 +34,12 @@ class RatingController extends Controller
     {
         // 認証ユーザーの予約であるかチェック
         if ($reservation->user_id !== Auth::id()) {
-            return redirect()->route('mypage')->with('error', '不正なアクセスです。');
+            return redirect()->route('mypage');
         }
 
         // 重複評価の防止
         if ($reservation->rating) {
-            return redirect()->route('mypage')->with('error', 'この予約はすでに評価済みです。');
+            return redirect()->route('mypage');
         }
 
         // 保存処理
@@ -48,6 +48,6 @@ class RatingController extends Controller
             'comment' => ['comment'],
         ]);
 
-        return redirect()->route('mypage')->with('success', '評価を投稿しました。');
+        return redirect()->route('mypage');
     }
 }

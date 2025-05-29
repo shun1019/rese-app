@@ -59,6 +59,14 @@
             </div>
 
             <div class="form-group">
+                <label for="price">料金</label>
+                <input type="text" name="price" value="{{ old('price', $shop->price ?? '') }}" class="form-control">
+                @error('price')
+                <div class="form-error">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
                 <label for="description">説明</label>
                 <textarea name="description" class="form-control">{{ old('description', $shop->description ?? '') }}</textarea>
                 @error('description')

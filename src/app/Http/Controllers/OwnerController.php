@@ -32,7 +32,7 @@ class OwnerController extends Controller
     public function storeShop(StoreShopRequest $request)
     {
         if (Auth::user()->shop) {
-            return redirect()->route('owner.mypage')->with('error', 'すでに店舗が登録されています。');
+            return redirect()->route('owner.mypage');
         }
 
         $imageName = null;
@@ -41,12 +41,13 @@ class OwnerController extends Controller
         }
 
         Shop::create([
-            'name' => $request->name,
-            'area' => $request->area,
-            'genre' => $request->genre,
+            'name'        => $request->name,
+            'area'        => $request->area,
+            'genre'       => $request->genre,
+            'price'       => $request->price,
             'description' => $request->description,
-            'image' => $imageName,
-            'user_id' => Auth::id(),
+            'image'       => $imageName,
+            'user_id'     => Auth::id(),
         ]);
 
         return redirect()->route('owner.mypage')->with('success', '店舗情報を登録しました。');
@@ -65,11 +66,12 @@ class OwnerController extends Controller
         }
 
         $shop->update([
-            'name' => $request->name,
-            'area' => $request->area,
-            'genre' => $request->genre,
+            'name'        => $request->name,
+            'area'        => $request->area,
+            'genre'       => $request->genre,
+            'price'       => $request->price,
             'description' => $request->description,
-            'image' => $imageName,
+            'image'       => $imageName,
         ]);
 
         return redirect()->route('owner.mypage')->with('success', '店舗情報を更新しました。');

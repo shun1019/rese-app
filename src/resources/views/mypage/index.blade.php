@@ -4,6 +4,7 @@
 
 @section('styles')
 <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 @endsection
 
 @section('header-content')
@@ -37,6 +38,7 @@
 
                 <div class="reservation-card">
                     <div class="reservation-header">
+                        <i class="fa fa-clock-o"></i>
                         <div class="reservation-number">予約{{ $loop->iteration }}</div>
                         <a href="{{ route('reservations.confirm-cancel', $reservation->id) }}" class="cancel-btn">
                             <i class="fas fa-times"></i>
@@ -60,10 +62,12 @@
 
                         <div class="detail-item editable" data-field="time">
                             <div class="detail-label">Time</div>
-                            <div class="detail-value view-mode">{{ $reservation->time }}</div>
+                            <div class="detail-value view-mode">{{ \Carbon\Carbon::parse($reservation->time)->format('H:i') }}</div>
                             <select name="time" class="edit-mode hidden">
                                 @foreach (["10:00","10:30","11:00","11:30","12:00","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00"] as $time)
-                                <option value="{{ $time }}" {{ $reservation->time === $time ? 'selected' : '' }}>{{ $time }}</option>
+                                <option value="{{ $time }}" {{ \Carbon\Carbon::parse($reservation->time)->format('H:i') === $time ? 'selected' : '' }}>
+                                    {{ $time }}
+                                </option>
                                 @endforeach
                             </select>
                             @error('time')

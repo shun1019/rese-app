@@ -57,6 +57,12 @@
     color: #333;
 }
 
+.shop-price {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #666;
+}
+
 .reservation-form {
     flex: 1;
     min-width: 300px;

@@ -15,7 +15,8 @@ class Shop extends Model
         'image',
         'area',
         'genre',
-        'user_id', // ← 必要に応じて明示してもOK
+        'user_id',
+        'price',
     ];
 
     public function reservations()

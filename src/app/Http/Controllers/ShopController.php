@@ -27,7 +27,7 @@ class ShopController extends Controller
             $query->where('name', 'like', '%' . $request->search . '%');
         }
 
-        $shops = $query->get();
+        $shops = $query->paginate(12);
 
         $areas = Shop::distinct()->pluck('area');
         $genres = Shop::distinct()->pluck('genre');

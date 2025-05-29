@@ -25,6 +25,10 @@
         <div class="shop-description">
             {{ $shop->description }}
         </div>
+
+        <div class="shop-price">
+            <strong>料金:</strong> {{ number_format($shop->price) }}円
+        </div>
     </div>
 
     <div class="reservation-form">

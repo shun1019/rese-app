@@ -2,7 +2,7 @@
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 1.1);
-    padding: 10px 15px;
+    padding: 10px;
     display: flex;
     align-items: center;
     width: 700px;
@@ -97,6 +97,19 @@
     color: #ff4b4b;
 }
 
+.pagination-container {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.pagination-container svg {
+    width: 20px;
+    height: 20px;
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
     .search-container {
@@ -113,5 +126,10 @@
     cursor: pointer;
     margin: 0;
 }
+
+.shops-container {
+        padding: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
 
 }

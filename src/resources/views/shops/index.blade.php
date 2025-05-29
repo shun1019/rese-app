@@ -52,6 +52,10 @@
     </div>
     @endforeach
 </div>
+
+<div class="pagination-container">
+    {{ $shops->links() }}
+</div>
 @endsection
 
 @section('scripts')
