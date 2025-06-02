@@ -8,7 +8,7 @@ class StoreOwnerRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true; // 認証済み管理者なので true
+        return true;
     }
 
     public function rules(): array

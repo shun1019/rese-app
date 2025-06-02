@@ -9,7 +9,7 @@ class AddPriceToShopsTable extends Migration
     public function up()
     {
         Schema::table('shops', function (Blueprint $table) {
-            $table->integer('price')->default(1000)->after('genre');
+            $table->integer('price')->after('genre');
         });
     }
 

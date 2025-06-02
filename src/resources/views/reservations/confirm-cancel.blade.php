@@ -9,7 +9,6 @@
 @section('content')
 <div class="cancel-container">
     <div class="cancel-card">
-        <a href="{{ route('mypage') }}" class="back-btn">戻る</a>
         <h1 class="cancel-title">予約キャンセルの確認</h1>
 
         <div class="reservation-details">
@@ -25,6 +24,7 @@
             <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
+                <a href="{{ route('mypage') }}" class="back-btn">戻る</a>
                 <button type="submit" class="cancel-btn">キャンセルする</button>
             </form>
         </div>

@@ -15,7 +15,7 @@ rese-app
 ・予約登録、予約一覧 / 修正 / キャンセル
 ・Stripe決済機能
 ・QRコード発行による来店管理
-・予約時間のリマインダーメール (実装未完)
+・予約時間のリマインダーメール (予約当日の朝に通知)
 ・店舗代表者の登録 / 予約情報の管理
 ・お気に入り機能
 ・利用者へのお知らせメール送信 (admin)
@@ -181,6 +181,38 @@ Docker コンテナを起動すると、MailHog も自動的に起動します�
 2. MailHog にアクセス: http://localhost:8025
 3. 受信ボックスにメールが届いていることを確認
 4. 認証メール内のリンクをクリックしてアカウントを有効化
+
+---
+
+## **リマインダーメール機能（FN035）**
+
+このアプリケーションには、**予約当日の朝8時に、一般ユーザーへリマインダーメールを送信する機能**が備わっています。
+
+### 動作概要
+
+- 対象：当日に予約がある一般ユーザー
+- 実行方法：Artisanコマンド `reservations:remind`
+- 送信内容：店舗名、予約日時などの基本情報
+- メール送信には MailHog を使用
+- 受信した通知はMailHog にアクセス: http://localhost:8025
+
+### ローカル環境での実行（Docker）
+
+```bash
+docker compose exec php php artisan reservations:remind
+```
+
+### Mac ショートカットを使った自動実行
+
+Mac の「ショートカット」アプリを用いて、`php artisan reservations:remind` を定期実行することができます。
+
+#### 使用スクリプト例：
+
+```bash
+#!/bin/zsh
+cd /Users/tanakatarou/laravel/rese-app
+docker compose exec php php artisan reservations:remind
+```
 
 ---
 

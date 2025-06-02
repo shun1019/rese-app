@@ -14,12 +14,10 @@ class RatingController extends Controller
      */
     public function create(Reservation $reservation)
     {
-        // 認証ユーザーの予約であるかチェック
         if ($reservation->user_id !== Auth::id()) {
             return redirect()->route('mypage');
         }
 
-        // すでに評価済みならマイページにリダイレクト
         if ($reservation->rating) {
             return redirect()->route('mypage');
         }
@@ -32,17 +30,14 @@ class RatingController extends Controller
      */
     public function store(Request $request, Reservation $reservation)
     {
-        // 認証ユーザーの予約であるかチェック
         if ($reservation->user_id !== Auth::id()) {
             return redirect()->route('mypage');
         }
 
-        // 重複評価の防止
         if ($reservation->rating) {
             return redirect()->route('mypage');
         }
 
-        // 保存処理
         $reservation->rating()->create([
             'score' => ['score'],
             'comment' => ['comment'],

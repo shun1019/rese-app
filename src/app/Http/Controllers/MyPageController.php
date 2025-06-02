@@ -13,15 +13,13 @@ class MyPageController extends Controller
     {
         $user = Auth::user();
 
-        // オーナーの場合は、店舗情報とその予約一覧を表示
         if ($user->isOwner()) {
             $shop = $user->shop;
-            $reservations = $shop ? $shop->reservations()->with('user')->get() : collect(); // 店舗未登録なら空コレクション
+            $reservations = $shop ? $shop->reservations()->with('user')->get() : collect();
 
             return view('mypage.owner', compact('user', 'shop', 'reservations'));
         }
 
-        // 一般ユーザーの場合
         $reservations = $user->reservations()->with(['shop', 'rating'])->get();
         $favorites = $user->favoriteShops()->get();
 

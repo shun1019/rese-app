@@ -87,23 +87,7 @@
                             <div class="form-error">{{ $message }}</div>
                             @enderror
                         </div>
-
-                        {{-- 評価ボタンの表示条件 --}}
-                        @php
-                        $resDate = \Carbon\Carbon::parse($reservation->date);
-                        @endphp
-
-                        @if (!$reservation->rating && $resDate->lte(\Carbon\Carbon::today()))
-                        <div class="detail-item">
-                            <a href="{{ route('ratings.create', $reservation->id) }}" class="rating-btn">評価する</a>
-                        </div>
-                        @elseif ($reservation->rating)
-                        <div class="detail-item">
-                            <span class="rated-label">評価済み</span>
-                        </div>
-                        @endif
                     </div>
-
                     <button type="submit" class="update-btn hidden">変更を保存</button>
                 </div>
             </form>

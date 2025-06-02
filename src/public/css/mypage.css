@@ -31,6 +31,7 @@
 
 .reservation-card {
     background-color: #3c64e6;
+    padding: 15px;
     color: #fff;
     border-radius: 4px;
     overflow: hidden;
@@ -41,37 +42,29 @@
 
 .reservation-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 10px;
 }
 
-.icon-image {
-    width: 40px;
-    height: 40px;
-}
-
-.reservation-number {
-    font-size: 18px;
+.fa-clock-o::before {
+    font-size: 30px;
+    vertical-align: middle;
 }
 
 .cancel-btn {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #3c64e6;
+    text-align: center;
     color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: solid;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    width: 26px;
+    height: 26px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background: #3c64e6;
+    margin-left: auto;
 }
 
-.cancel-btn:hover {
-    background-color: #f0f0f0;
+.reservation-number {
+    margin-left: 30px;
+    font-size: 18px;
 }
 
 .reservation-detail {
@@ -80,7 +73,7 @@
 
 .detail-item {
     display: flex;
-    justify-content: space-between;
+    gap: 70px;
     margin-bottom: 10px;
 }
 
@@ -89,7 +82,9 @@
 }
 
 .detail-label {
+    width: 10px;
     font-weight: bold;
+    padding-right: 30px;
 }
 
 .favorites-grid {
@@ -160,18 +155,9 @@
 .reservation-edit-form select {
     padding: 5px;
     font-size: 14px;
-    margin-bottom: 10px;
-}
-
-.edit-mode {
-    font-size: 14px;
-    padding: 4px;
-    margin-top: 4px;
 }
 
 .update-btn {
-    margin-top: 10px;
-    margin-right: 10px;
     background-color: #fff;
     color: #3c64e6;
     border: none;
@@ -180,10 +166,6 @@
     border-radius: 4px;
     cursor: pointer;
     float: right;
-}
-
-.update-btn:hover {
-    background-color: #2a4dcc;
 }
 
 .hidden {

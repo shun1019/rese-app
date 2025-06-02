@@ -113,23 +113,22 @@
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
     .search-container {
-    width: 70%;
-}
+        width: 70%;
+    }
 
-.search-container input {
-    font-size: 14px;
-    width: 45%;
-    margin: 0;
-}
+    .search-container input {
+        font-size: 14px;
+        width: 45%;
+        margin: 0;
+    }
 
-.search-container select {
-    cursor: pointer;
-    margin: 0;
-}
+    .search-container select {
+        cursor: pointer;
+        margin: 0;
+    }
 
-.shops-container {
+    .shops-container {
         padding: 20px;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
-
 }

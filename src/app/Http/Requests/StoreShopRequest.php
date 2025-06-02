@@ -11,9 +11,6 @@ class StoreShopRequest extends FormRequest
         return true;
     }
 
-    /**
-     * バリデーションルール
-     */
     public function rules(): array
     {
         return [
@@ -25,9 +22,6 @@ class StoreShopRequest extends FormRequest
         ];
     }
 
-    /**
-     * カスタムメッセージ
-     */
     public function messages(): array
     {
         return [

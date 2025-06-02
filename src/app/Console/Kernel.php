@@ -7,12 +7,18 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
-    protected function schedule(Schedule $schedule)
+    /**
+     * Artisanコマンドを定期的にスケジューリング
+     */
+    protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('reservations:remind')->dailyAt('23:04');
+        $schedule->command('reservations:remind')->dailyAt('08:00');
     }
 
-    protected function commands()
+    /**
+     * アプリケーションのコマンド登録
+     */
+    protected function commands(): void
     {
         $this->load(__DIR__ . '/Commands');
 
