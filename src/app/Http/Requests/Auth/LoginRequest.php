@@ -26,7 +26,7 @@ class LoginRequest extends FortifyLoginRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'email' => ['required', 'email'],
             'password' => ['required', 'string'],
         ];
     }

@@ -18,7 +18,7 @@ class StoreShopRequest extends FormRequest
             'area'        => 'required|string',
             'genre'       => 'required|string',
             'price'       => 'required|numeric|min:1',
-            'description' => 'nullable|string|max:1000',
+            'description' => 'required|string',
         ];
     }
 
@@ -31,6 +31,7 @@ class StoreShopRequest extends FormRequest
             'price.required' => '料金を入力してください。',
             'price.numeric'  => '料金は数値で入力してください。',
             'price.min'      => '料金は1円以上にしてください。',
+            'description.required' => '説明を入力してください。',
         ];
     }
 }
