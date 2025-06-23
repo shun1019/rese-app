@@ -26,7 +26,7 @@ rese-app
 1. リポジトリをクローン:
 
    ```bash
-   git@github.com:shun1019/rese-app.git
+   git clone git@github.com:shun1019/rese-app.git
    cd rese-app
    ```
 
